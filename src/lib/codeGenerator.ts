@@ -1,4 +1,4 @@
-import type { FormSchema } from '@/types'
+import type { FormSchema, FormField, SelectOption } from '@/types'
 import { generateReactCode } from './codeGenerators/reactGenerator'
 import { generateJavaScriptCode } from './codeGenerators/javascriptGenerator'
 import { generateVueCode } from './codeGenerators/vueGenerator'
@@ -132,7 +132,7 @@ function generateFieldCode(field: FormField, style?: import('@/types').FormStyle
           ${required ? 'required' : ''}
         >
           <option value="">Select an option</option>
-${field.options?.map(opt => `          <option value="${opt.value}">${opt.label}</option>`).join('\n')}
+${field.options?.map((opt: SelectOption) => `          <option value="${opt.value}">${opt.label}</option>`).join('\n')}
         </select>
         ${error}
       </div>`
