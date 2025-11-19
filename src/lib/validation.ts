@@ -47,7 +47,7 @@ export const validateField = (field: FormField, value: string | number | boolean
   }
 
   // Email validation
-  if (field.type === 'email') {
+  if (field.type === 'email' && typeof value === 'string') {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(value)) {
       return 'Please enter a valid email address'
@@ -55,7 +55,7 @@ export const validateField = (field: FormField, value: string | number | boolean
   }
 
   // URL validation
-  if (field.type === 'url') {
+  if (field.type === 'url' && typeof value === 'string') {
     try {
       new URL(value)
     } catch {
