@@ -31,7 +31,7 @@ export default function Error({
         </div>
         
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          We encountered an unexpected error while loading this page. This has been logged and we'll look into it.
+          We encountered an unexpected error while loading this page. This has been logged and we&apos;ll look into it.
         </p>
 
         {process.env.NODE_ENV === 'development' && (
