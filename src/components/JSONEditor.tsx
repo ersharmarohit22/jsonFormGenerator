@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, type DragEvent, type ChangeEvent } from 'react'
 import { Upload, FileJson, AlertCircle } from 'lucide-react'
 
 interface JSONEditorProps {
@@ -9,11 +9,11 @@ interface JSONEditorProps {
   error?: string | null
 }
 
-export function JSONEditor({ value, onChange, error }: JSONEditorProps) {
+export const JSONEditor = ({ value, onChange, error }: JSONEditorProps) => {
   const [dragActive, setDragActive] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const handleDrag = (e: React.DragEvent) => {
+  const handleDrag = (e: DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
     if (e.type === "dragenter" || e.type === "dragover") {
@@ -23,7 +23,7 @@ export function JSONEditor({ value, onChange, error }: JSONEditorProps) {
     }
   }
 
-  const handleDrop = (e: React.DragEvent) => {
+  const handleDrop = (e: DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
     setDragActive(false)
@@ -33,7 +33,7 @@ export function JSONEditor({ value, onChange, error }: JSONEditorProps) {
     }
   }
 
-  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       handleFile(e.target.files[0])
     }

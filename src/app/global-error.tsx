@@ -2,13 +2,15 @@
 
 import { AlertCircle } from 'lucide-react'
 
-export default function GlobalError({
+const GlobalError = ({
   error,
   reset,
 }: {
   error: Error & { digest?: string }
   reset: () => void
-}) {
+}) => {
+  // Error is available but not displayed in this minimal error boundary
+  void error
   return (
     <html>
       <body>
@@ -87,4 +89,6 @@ export default function GlobalError({
     </html>
   )
 }
+
+export default GlobalError
 

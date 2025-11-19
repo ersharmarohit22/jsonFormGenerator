@@ -15,7 +15,7 @@ import type { ExampleSchema } from '@/lib/schemaExamples'
 
 type TabType = 'preview' | 'code'
 
-export default function Home() {
+const Home = () => {
   const [jsonInput, setJsonInput] = useState('')
   const [schema, setSchema] = useState<FormSchema | null>(null)
   const [parseError, setParseError] = useState<string | null>(null)
@@ -242,3 +242,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home

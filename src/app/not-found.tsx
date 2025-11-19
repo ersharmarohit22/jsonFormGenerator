@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Home, ArrowLeft } from 'lucide-react'
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-2xl mx-auto text-center">
@@ -15,7 +15,7 @@ export default function NotFound() {
             Page Not Found
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            Oops! The page you're looking for doesn't exist or has been moved.
+            Oops! The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
         </div>
 
@@ -64,4 +64,6 @@ export default function NotFound() {
     </div>
   )
 }
+
+export default NotFound
 

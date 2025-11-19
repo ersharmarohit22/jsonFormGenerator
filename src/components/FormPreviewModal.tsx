@@ -10,7 +10,7 @@ interface FormPreviewModalProps {
   onClose: () => void
 }
 
-export function FormPreviewModal({ schema, isOpen, onClose }: FormPreviewModalProps) {
+export const FormPreviewModal = ({ schema, isOpen, onClose }: FormPreviewModalProps) => {
   if (!isOpen) return null
 
   return (

@@ -5,7 +5,7 @@
 /**
  * Sanitize user input to prevent XSS attacks
  */
-export function sanitizeInput(input: string): string {
+export const sanitizeInput = (input: string): string => {
   return input
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -17,7 +17,7 @@ export function sanitizeInput(input: string): string {
 /**
  * Validate JSON input securely
  */
-export function secureJSONParse<T>(jsonString: string): T | null {
+export const secureJSONParse = <T>(jsonString: string): T | null => {
   try {
     // Remove any potential script tags or dangerous content
     const cleaned = jsonString.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')

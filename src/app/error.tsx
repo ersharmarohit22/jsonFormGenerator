@@ -3,13 +3,13 @@
 import { useEffect } from 'react'
 import { AlertCircle } from 'lucide-react'
 
-export default function Error({
+const Error = ({
   error,
   reset,
 }: {
   error: Error & { digest?: string }
   reset: () => void
-}) {
+}) => {
   useEffect(() => {
     // Log the error to console in development only
     if (process.env.NODE_ENV === 'development') {
@@ -31,7 +31,7 @@ export default function Error({
         </div>
         
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          We encountered an unexpected error while loading this page. This has been logged and we'll look into it.
+          We encountered an unexpected error while loading this page. This has been logged and we&apos;ll look into it.
         </p>
 
         {process.env.NODE_ENV === 'development' && (
@@ -70,4 +70,6 @@ export default function Error({
     </div>
   )
 }
+
+export default Error
 

@@ -8,7 +8,7 @@ interface CodePreviewProps {
   language?: string
 }
 
-export function CodePreview({ code, language = 'typescript' }: CodePreviewProps) {
+export const CodePreview = ({ code }: CodePreviewProps) => {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {

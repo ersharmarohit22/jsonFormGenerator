@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { FileJson } from 'lucide-react'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
-export function Navigation() {
+export const Navigation = () => {
   return (
     <nav className="fixed top-0 w-full z-50 glass-effect shadow-lg py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

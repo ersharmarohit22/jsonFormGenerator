@@ -1,12 +1,13 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import { useTheme, type Theme } from '@/contexts/ThemeContext'
 import { Sun, Moon, Monitor } from 'lucide-react'
 
-export function ThemeSwitcher() {
+export const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme()
 
-  const themes: { value: Theme; icon: React.ReactNode; label: string }[] = [
+  const themes: { value: Theme; icon: ReactNode; label: string }[] = [
     { value: 'light', icon: <Sun className="w-4 h-4" />, label: 'Light' },
     { value: 'grey', icon: <Monitor className="w-4 h-4" />, label: 'Grey' },
     { value: 'dark', icon: <Moon className="w-4 h-4" />, label: 'Dark' },

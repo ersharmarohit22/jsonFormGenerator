@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import type { FormSchema, FormValues, FormErrors } from '@/types'
 import { validateForm, hasErrors } from '@/lib/validation'
 import { FormFieldComponent } from './FormFieldComponent'
@@ -11,7 +11,7 @@ interface FormRendererProps {
   onSubmit?: (values: FormValues) => void
 }
 
-export function FormRenderer({ schema, onSubmit }: FormRendererProps) {
+export const FormRenderer = ({ schema, onSubmit }: FormRendererProps) => {
   const [values, setValues] = useState<FormValues>(() => {
     const initialValues: FormValues = {}
     schema.fields.forEach(field => {
@@ -23,7 +23,7 @@ export function FormRenderer({ schema, onSubmit }: FormRendererProps) {
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitted, setSubmitted] = useState(false)
 
-  const handleChange = (name: string, value: any) => {
+  const handleChange = (name: string, value: string | number | boolean) => {
     setValues(prev => ({ ...prev, [name]: value }))
     
     // Clear error for this field
@@ -36,7 +36,7 @@ export function FormRenderer({ schema, onSubmit }: FormRendererProps) {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     
     const validationErrors = validateForm(schema.fields, values)

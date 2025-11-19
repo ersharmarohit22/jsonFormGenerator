@@ -2,14 +2,13 @@
 
 import { useState } from 'react'
 import { FileJson, ChevronDown } from 'lucide-react'
-import { exampleSchemas, categories } from '@/lib/schemaExamples'
-import type { ExampleSchema } from '@/lib/schemaExamples'
+import { exampleSchemas, categories, type ExampleSchema } from '@/lib/schemaExamples'
 
 interface ExampleSelectorProps {
   onSelectExample: (example: ExampleSchema) => void
 }
 
-export function ExampleSelector({ onSelectExample }: ExampleSelectorProps) {
+export const ExampleSelector = ({ onSelectExample }: ExampleSelectorProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
