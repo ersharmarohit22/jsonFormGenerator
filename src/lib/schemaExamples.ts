@@ -1081,7 +1081,7 @@ export const exampleSchemas: ExampleSchema[] = [
           focusColor: '#9333ea',
         },
         fieldStyle: {
-          borderRadius: 'xl',
+          borderRadius: 'lg',
           borderWidth: 'normal',
           fieldHeight: 'lg',
         },
@@ -1280,7 +1280,7 @@ export const exampleSchemas: ExampleSchema[] = [
           focusColor: '#14b8a6',
         },
         fieldStyle: {
-          borderRadius: 'xl',
+          borderRadius: 'lg',
           borderWidth: 'normal',
           fieldHeight: 'lg',
         },
@@ -2042,7 +2042,7 @@ export const exampleSchemas: ExampleSchema[] = [
           focusColor: '#22d3ee',
         },
         fieldStyle: {
-          borderRadius: 'xl',
+          borderRadius: 'lg',
           borderWidth: 'normal',
           fieldHeight: 'lg',
         },
