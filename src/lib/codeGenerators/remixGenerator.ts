@@ -234,15 +234,15 @@ const getInputClassForGeneration = (style?: import('@/types').FormStyle): string
 
 const generateInlineStyles = (theme: import('@/types').FormStyle['theme']): string => {
   const styles: string[] = []
-  if (theme.backgroundColor) styles.push(`backgroundColor: '${theme.backgroundColor}'`)
-  if (theme.textColor) styles.push(`color: '${theme.textColor}'`)
+  if (theme?.backgroundColor) styles.push(`backgroundColor: '${theme.backgroundColor}'`)
+  if (theme?.textColor) styles.push(`color: '${theme.textColor}'`)
   return styles.join(', ')
 }
 
 const generateButtonStyles = (theme: import('@/types').FormStyle['theme']): string => {
   const styles: string[] = []
-  if (theme.buttonColor) styles.push(`backgroundColor: '${theme.buttonColor}'`)
-  if (theme.buttonTextColor) styles.push(`color: '${theme.buttonTextColor}'`)
+  if (theme?.buttonColor) styles.push(`backgroundColor: '${theme.buttonColor}'`)
+  if (theme?.buttonTextColor) styles.push(`color: '${theme.buttonTextColor}'`)
   return styles.join(', ')
 }
 

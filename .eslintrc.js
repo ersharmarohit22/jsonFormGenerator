@@ -105,6 +105,11 @@ module.exports = {
     "no-undef": "error", // TODO getting close
     "react/jsx-key": "error",
     "no-dupe-args": "error",
+    // "@typescript-eslint/no-unsafe-member-access": "error",
+    // "@typescript-eslint/no-unsafe-call": "error",
+    // "@typescript-eslint/no-unsafe-assignment": "error",
+    "@typescript-eslint/no-unsafe-argument": "error",
+    // "@typescript-eslint/strict-boolean-expressions": "error",
     // "no-unreachable": "error", //TODO just in map currently
 
     // "@typescript-eslint/ban-types": [
