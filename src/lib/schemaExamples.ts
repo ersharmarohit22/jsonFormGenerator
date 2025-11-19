@@ -2132,11 +2132,11 @@ export const exampleSchemas: ExampleSchema[] = [
   }
 ]
 
-export function getExampleById(id: string): ExampleSchema | undefined {
+export const getExampleById = (id: string): ExampleSchema | undefined => {
   return exampleSchemas.find(example => example.id === id)
 }
 
-export function getExamplesByCategory(category: ExampleSchema['category']): ExampleSchema[] {
+export const getExamplesByCategory = (category: ExampleSchema['category']): ExampleSchema[] => {
   return exampleSchemas.filter(example => example.category === category)
 }
 

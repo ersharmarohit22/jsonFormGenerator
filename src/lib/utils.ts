@@ -5,14 +5,14 @@ import { twMerge } from 'tailwind-merge'
  * Utility function to merge Tailwind CSS classes
  * Combines clsx for conditional classes and tailwind-merge for conflict resolution
  */
-export function cn(...inputs: ClassValue[]) {
+export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs))
 }
 
 /**
  * Format bytes to human-readable string
  */
-export function formatBytes(bytes: number, decimals = 2): string {
+export const formatBytes = (bytes: number, decimals = 2): string => {
   if (bytes === 0) return '0 Bytes'
 
   const k = 1024
@@ -27,7 +27,7 @@ export function formatBytes(bytes: number, decimals = 2): string {
 /**
  * Format milliseconds to human-readable string
  */
-export function formatMs(ms: number): string {
+export const formatMs = (ms: number): string => {
   if (ms < 1000) return `${Math.round(ms)}ms`
   return `${(ms / 1000).toFixed(2)}s`
 }
@@ -35,13 +35,13 @@ export function formatMs(ms: number): string {
 /**
  * Debounce function for performance optimization
  */
-export function debounce<T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout | null = null
+): ((...args: Parameters<T>) => void) => {
+  let timeout: ReturnType<typeof setTimeout> | null = null
 
-  return function executedFunction(...args: Parameters<T>) {
+  return (...args: Parameters<T>) => {
     const later = () => {
       timeout = null
       func(...args)
@@ -55,13 +55,13 @@ export function debounce<T extends (...args: any[]) => any>(
 /**
  * Throttle function for performance optimization
  */
-export function throttle<T extends (...args: any[]) => any>(
+export const throttle = <T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
-): (...args: Parameters<T>) => void {
+): ((...args: Parameters<T>) => void) => {
   let inThrottle: boolean
   
-  return function executedFunction(...args: Parameters<T>) {
+  return (...args: Parameters<T>) => {
     if (!inThrottle) {
       func(...args)
       inThrottle = true

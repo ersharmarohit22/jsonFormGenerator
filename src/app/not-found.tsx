@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Home, ArrowLeft } from 'lucide-react'
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-2xl mx-auto text-center">
@@ -64,4 +64,6 @@ export default function NotFound() {
     </div>
   )
 }
+
+export default NotFound
 

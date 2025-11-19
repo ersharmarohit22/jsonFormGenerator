@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const sitemap = (): MetadataRoute.Sitemap => {
   const baseUrl = 'https://staff-engineer-showcase.vercel.app'
   
   return [
@@ -24,4 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 }
+
+export default sitemap
 

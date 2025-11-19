@@ -1,6 +1,6 @@
 import type { FormSchema, FormField } from '@/types'
 
-export function generateReactCode(schema: FormSchema): string {
+export const generateReactCode = (schema: FormSchema): string => {
   const fields = schema.fields.map(field => generateFieldCode(field, schema.style)).join('\n\n')
   const styleClasses = generateStyleClasses(schema.style)
 
@@ -61,7 +61,7 @@ ${fields}
 }`
 }
 
-function generateFieldCode(field: FormField, style?: import('@/types').FormStyle): string {
+const generateFieldCode = (field: FormField, style?: import('@/types').FormStyle): string => {
   const required = field.validation?.required
   const error = `{errors.${field.name} && <p className="text-red-600 text-sm mt-1">{errors.${field.name}}</p>}`
   const inputClass = getInputClassForGeneration(style)
@@ -154,11 +154,11 @@ function generateFieldCode(field: FormField, style?: import('@/types').FormStyle
   }
 }
 
-function toPascalCase(str: string): string {
+const toPascalCase = (str: string): string => {
   return str.replace(/\w+/g, w => w[0].toUpperCase() + w.slice(1).toLowerCase()).replace(/\s+/g, '')
 }
 
-function getDefaultValue(field: FormField): string {
+const getDefaultValue = (field: FormField): string => {
   if (field.defaultValue !== undefined) {
     return typeof field.defaultValue === 'string' ? `'${field.defaultValue}'` : String(field.defaultValue)
   }
@@ -167,7 +167,7 @@ function getDefaultValue(field: FormField): string {
   return "''"
 }
 
-function generateValidationCode(field: FormField): string {
+const generateValidationCode = (field: FormField): string => {
   const validation = field.validation!
   const checks: string[] = []
 
@@ -187,7 +187,7 @@ function generateValidationCode(field: FormField): string {
   return checks.join('\n')
 }
 
-function generateStyleClasses(style?: import('@/types').FormStyle) {
+const generateStyleClasses = (style?: import('@/types').FormStyle) => {
   const spacing = style?.spacing === 'compact' ? 'space-y-3' :
                   style?.spacing === 'relaxed' ? 'space-y-8' : 'space-y-6'
 
@@ -210,7 +210,7 @@ function generateStyleClasses(style?: import('@/types').FormStyle) {
   }
 }
 
-function getInputClassForGeneration(style?: import('@/types').FormStyle): string {
+const getInputClassForGeneration = (style?: import('@/types').FormStyle): string => {
   const borderRadius = style?.fieldStyle?.borderRadius === 'none' ? 'rounded-none' :
                        style?.fieldStyle?.borderRadius === 'sm' ? 'rounded' :
                        style?.fieldStyle?.borderRadius === 'lg' ? 'rounded-xl' :
@@ -222,14 +222,14 @@ function getInputClassForGeneration(style?: import('@/types').FormStyle): string
   return `w-full px-4 ${height} border ${borderRadius} border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent`
 }
 
-function generateInlineStyles(theme: import('@/types').FormStyle['theme']): string {
+const generateInlineStyles = (theme: import('@/types').FormStyle['theme']): string => {
   const styles: string[] = []
   if (theme?.backgroundColor) styles.push(`backgroundColor: '${theme.backgroundColor}'`)
   if (theme?.textColor) styles.push(`color: '${theme.textColor}'`)
   return styles.join(', ')
 }
 
-function generateButtonStyles(theme: import('@/types').FormStyle['theme']): string {
+const generateButtonStyles = (theme: import('@/types').FormStyle['theme']): string => {
   const styles: string[] = []
   if (theme?.buttonColor) styles.push(`backgroundColor: '${theme.buttonColor}'`)
   if (theme?.buttonTextColor) styles.push(`color: '${theme.buttonTextColor}'`)

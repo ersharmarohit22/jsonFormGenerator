@@ -1,7 +1,7 @@
 import type { FormSchema } from '@/types'
 import { exampleSchemas } from './schemaExamples'
 
-export function parseJSONSchema(jsonString: string): FormSchema | null {
+export const parseJSONSchema = (jsonString: string): FormSchema | null => {
   try {
     const parsed = JSON.parse(jsonString)
     
@@ -11,7 +11,7 @@ export function parseJSONSchema(jsonString: string): FormSchema | null {
     }
 
     // Validate each field
-    parsed.fields.forEach((field: any, index: number) => {
+    parsed.fields.forEach((field: Record<string, unknown>, index: number) => {
       if (!field.name || !field.label || !field.type) {
         throw new Error(`Invalid field at index ${index}: missing required properties (name, label, type)`)
       }
@@ -24,12 +24,12 @@ export function parseJSONSchema(jsonString: string): FormSchema | null {
   }
 }
 
-export function getExampleSchema(): FormSchema {
+export const getExampleSchema = (): FormSchema => {
   // Return the first example schema (Contact Form)
   return exampleSchemas[0].schema
 }
 
-export function schemaToJSON(schema: FormSchema, pretty: boolean = true): string {
+export const schemaToJSON = (schema: FormSchema, pretty: boolean = true): string => {
   return JSON.stringify(schema, null, pretty ? 2 : 0)
 }
 

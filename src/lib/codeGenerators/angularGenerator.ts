@@ -1,6 +1,6 @@
 import type { FormSchema, FormField } from '@/types'
 
-export function generateAngularCode(schema: FormSchema): string {
+export const generateAngularCode = (schema: FormSchema): string => {
   const componentName = toPascalCase(schema.title)
   const fields = schema.fields.map(field => generateFieldTemplate(field)).join('\n      ')
   const formControls = schema.fields.map(f => `      ${f.name}: ['${getDefaultValue(f)}', ${getValidators(f)}]`).join(',\n')
@@ -198,7 +198,7 @@ ${componentHTML}
 ${componentCSS}`
 }
 
-function generateFieldTemplate(field: FormField): string {
+const generateFieldTemplate = (field: FormField): string => {
   const required = field.validation?.required ? ' *' : ''
 
   switch (field.type) {
@@ -278,7 +278,7 @@ function generateFieldTemplate(field: FormField): string {
   }
 }
 
-function getValidators(field: FormField): string {
+const getValidators = (field: FormField): string => {
   if (!field.validation) return '[]'
 
   const validators: string[] = []
@@ -299,7 +299,7 @@ function getValidators(field: FormField): string {
   return validators.length > 0 ? `[${validators.join(', ')}]` : '[]'
 }
 
-function getDefaultValue(field: FormField): string {
+const getDefaultValue = (field: FormField): string => {
   if (field.defaultValue !== undefined) {
     return typeof field.defaultValue === 'string' ? field.defaultValue : String(field.defaultValue)
   }
@@ -308,15 +308,15 @@ function getDefaultValue(field: FormField): string {
   return ''
 }
 
-function toPascalCase(str: string): string {
+const toPascalCase = (str: string): string => {
   return str.replace(/\w+/g, w => w[0].toUpperCase() + w.slice(1).toLowerCase()).replace(/\s+/g, '')
 }
 
-function toKebabCase(str: string): string {
+const toKebabCase = (str: string): string => {
   return str.toLowerCase().replace(/\s+/g, '-')
 }
 
-function getBorderRadius(radius?: string): string {
+const getBorderRadius = (radius?: string): string => {
   switch (radius) {
     case 'none': return '0'
     case 'sm': return '0.25rem'
@@ -326,7 +326,7 @@ function getBorderRadius(radius?: string): string {
   }
 }
 
-function getButtonAlignment(alignment?: string): string {
+const getButtonAlignment = (alignment?: string): string => {
   switch (alignment) {
     case 'left': return ''
     case 'center': return 'display: block; margin-left: auto; margin-right: auto;'

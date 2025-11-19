@@ -1,6 +1,6 @@
-import type { FormField, FormValues, FormErrors, ValidationRule } from '@/types'
+import type { FormField, FormValues, FormErrors } from '@/types'
 
-export function validateField(field: FormField, value: any): string | null {
+export const validateField = (field: FormField, value: string | number | boolean | undefined): string | null => {
   const validation = field.validation
 
   if (!validation) return null
@@ -29,7 +29,7 @@ export function validateField(field: FormField, value: any): string | null {
         if (!regex.test(value)) {
           return `${field.label} format is invalid`
         }
-      } catch (e) {
+      } catch {
         console.error('Invalid regex pattern:', validation.pattern)
       }
     }
@@ -66,7 +66,7 @@ export function validateField(field: FormField, value: any): string | null {
   return null
 }
 
-export function validateForm(fields: FormField[], values: FormValues): FormErrors {
+export const validateForm = (fields: FormField[], values: FormValues): FormErrors => {
   const errors: FormErrors = {}
 
   fields.forEach(field => {
@@ -81,7 +81,7 @@ export function validateForm(fields: FormField[], values: FormValues): FormError
   return errors
 }
 
-export function hasErrors(errors: FormErrors): boolean {
+export const hasErrors = (errors: FormErrors): boolean => {
   return Object.keys(errors).length > 0
 }
 

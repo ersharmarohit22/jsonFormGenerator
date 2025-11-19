@@ -5,13 +5,13 @@ import { getFieldContainerClass, getInputClass, getLabelClass, getFocusRingColor
 
 interface FormFieldProps {
   field: FormField
-  value: any
+  value: string | number | boolean | undefined
   error?: FieldError
-  onChange: (name: string, value: any) => void
+  onChange: (name: string, value: string | number | boolean) => void
   formStyle?: FormStyle
 }
 
-export function FormFieldComponent({ field, value, error, onChange, formStyle }: FormFieldProps) {
+export const FormFieldComponent = ({ field, value, error, onChange, formStyle }: FormFieldProps) => {
   const required = field.validation?.required
   const hasError = !!error
 

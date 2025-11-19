@@ -70,7 +70,7 @@ export interface FormSchema {
 }
 
 export interface FormValues {
-  [key: string]: any
+  [key: string]: string | number | boolean | undefined
 }
 
 export interface FieldError {

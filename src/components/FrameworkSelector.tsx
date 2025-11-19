@@ -7,7 +7,7 @@ interface FrameworkSelectorProps {
   onChange: (framework: Framework) => void
 }
 
-export function FrameworkSelector({ selected, onChange }: FrameworkSelectorProps) {
+export const FrameworkSelector = ({ selected, onChange }: FrameworkSelectorProps) => {
   const frameworks: { value: Framework; label: string; icon: string }[] = [
     { value: 'react', label: 'React', icon: '⚛️' },
     { value: 'vue', label: 'Vue', icon: '💚' },

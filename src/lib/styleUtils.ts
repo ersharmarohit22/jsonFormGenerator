@@ -1,6 +1,6 @@
 import type { FormStyle } from '@/types'
 
-export function getFormContainerClass(style?: FormStyle): string {
+export const getFormContainerClass = (style?: FormStyle): string => {
   const spacing = {
     compact: 'space-y-3',
     normal: 'space-y-6',
@@ -17,7 +17,7 @@ export function getFormContainerClass(style?: FormStyle): string {
   return spacing
 }
 
-export function getFieldContainerClass(style?: FormStyle): string {
+export const getFieldContainerClass = (style?: FormStyle): string => {
   const layout = style?.layout || 'vertical'
   const labelPosition = style?.labelPosition || 'top'
   
@@ -28,7 +28,7 @@ export function getFieldContainerClass(style?: FormStyle): string {
   return ''
 }
 
-export function getInputClass(style?: FormStyle, hasError: boolean = false): string {
+export const getInputClass = (style?: FormStyle, hasError: boolean = false): string => {
   const borderRadius = {
     none: 'rounded-none',
     sm: 'rounded',
@@ -56,7 +56,7 @@ export function getInputClass(style?: FormStyle, hasError: boolean = false): str
   return `w-full px-4 ${height} ${borderWidth} ${borderRadius} ${borderColor} focus:ring-2 focus:border-transparent transition-colors dark:bg-gray-800 dark:text-white`
 }
 
-export function getButtonClass(style?: FormStyle): string {
+export const getButtonClass = (style?: FormStyle): string => {
   const alignment = {
     left: 'mr-auto',
     center: 'mx-auto',
@@ -75,7 +75,7 @@ export function getButtonClass(style?: FormStyle): string {
   return `${alignment} px-6 py-3 ${borderRadius} font-semibold transition-colors shadow-lg hover:shadow-xl`
 }
 
-export function getLabelClass(style?: FormStyle): string {
+export const getLabelClass = (style?: FormStyle): string => {
   const labelPosition = style?.labelPosition || 'top'
   
   if (labelPosition === 'left') {
@@ -89,7 +89,7 @@ export function getLabelClass(style?: FormStyle): string {
   return 'block text-sm font-medium mb-2'
 }
 
-export function getThemeStyles(style?: FormStyle): React.CSSProperties {
+export const getThemeStyles = (style?: FormStyle): Record<string, string> => {
   const theme = style?.theme || {}
   
   return {
@@ -98,7 +98,7 @@ export function getThemeStyles(style?: FormStyle): React.CSSProperties {
   }
 }
 
-export function getButtonStyles(style?: FormStyle): React.CSSProperties {
+export const getButtonStyles = (style?: FormStyle): Record<string, string> => {
   const theme = style?.theme || {}
   
   return {
@@ -107,7 +107,7 @@ export function getButtonStyles(style?: FormStyle): React.CSSProperties {
   }
 }
 
-export function getFocusRingColor(style?: FormStyle): string {
+export const getFocusRingColor = (style?: FormStyle): string => {
   const focusColor = style?.theme?.focusColor
   
   if (focusColor) {

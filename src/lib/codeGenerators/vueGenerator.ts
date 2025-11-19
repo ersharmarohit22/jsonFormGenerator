@@ -1,6 +1,6 @@
 import type { FormSchema, FormField } from '@/types'
 
-export function generateVueCode(schema: FormSchema): string {
+export const generateVueCode = (schema: FormSchema): string => {
   const fields = schema.fields.map(field => generateFieldTemplate(field)).join('\n      ')
   const dataFields = schema.fields.map(f => `      ${f.name}: ${getDefaultValue(f)}`).join(',\n')
   const validation = schema.fields.filter(f => f.validation).map(f => generateValidation(f)).join('\n      ')
@@ -162,7 +162,7 @@ textarea:focus {
 </style>`
 }
 
-function generateFieldTemplate(field: FormField): string {
+const generateFieldTemplate = (field: FormField): string => {
   const required = field.validation?.required ? ' *' : ''
 
   switch (field.type) {
@@ -232,7 +232,7 @@ function generateFieldTemplate(field: FormField): string {
   }
 }
 
-function generateValidation(field: FormField): string {
+const generateValidation = (field: FormField): string => {
   const validation = field.validation!
   const checks: string[] = []
 
@@ -263,7 +263,7 @@ function generateValidation(field: FormField): string {
   return checks.join('\n  ')
 }
 
-function getDefaultValue(field: FormField): string {
+const getDefaultValue = (field: FormField): string => {
   if (field.defaultValue !== undefined) {
     return typeof field.defaultValue === 'string' ? `'${field.defaultValue}'` : String(field.defaultValue)
   }
@@ -272,7 +272,7 @@ function getDefaultValue(field: FormField): string {
   return "''"
 }
 
-function getBorderRadius(radius?: string): string {
+const getBorderRadius = (radius?: string): string => {
   switch (radius) {
     case 'none': return '0'
     case 'sm': return '0.25rem'
@@ -282,7 +282,7 @@ function getBorderRadius(radius?: string): string {
   }
 }
 
-function getButtonAlignment(alignment?: string): string {
+const getButtonAlignment = (alignment?: string): string => {
   switch (alignment) {
     case 'left': return ''
     case 'center': return 'display: block; margin-left: auto; margin-right: auto;'

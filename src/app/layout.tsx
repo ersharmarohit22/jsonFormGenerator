@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/Navigation'
@@ -17,11 +18,11 @@ export const metadata: Metadata = {
   keywords: ['JSON', 'Form Builder', 'React', 'TypeScript', 'Form Generator', 'Validation'],
 }
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: {
-  children: React.ReactNode
-}) {
+  children: ReactNode
+}) => {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className={`${inter.className} antialiased`} suppressHydrationWarning>
@@ -49,3 +50,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+export default RootLayout

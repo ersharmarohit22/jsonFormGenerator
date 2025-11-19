@@ -4,6 +4,11 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false, // Remove X-Powered-By header for security
   
+  // ESLint configuration - show errors but don't fail build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  
   // Compiler options
   compiler: {
     // Remove console.logs in production

@@ -1,6 +1,6 @@
 import type { FormSchema, FormField } from '@/types'
 
-export function generateJavaScriptCode(schema: FormSchema): string {
+export const generateJavaScriptCode = (schema: FormSchema): string => {
   const fields = schema.fields.map(field => generateFieldHTML(field)).join('\n      ')
   const validation = schema.fields.filter(f => f.validation).map(f => generateValidationJS(f)).join('\n    ')
 
@@ -166,7 +166,7 @@ ${validation}
 </html>`
 }
 
-function generateFieldHTML(field: FormField): string {
+const generateFieldHTML = (field: FormField): string => {
   const required = field.validation?.required ? ' *' : ''
 
   switch (field.type) {
@@ -242,7 +242,7 @@ function generateFieldHTML(field: FormField): string {
   }
 }
 
-function generateValidationJS(field: FormField): string {
+const generateValidationJS = (field: FormField): string => {
   const validation = field.validation!
   const checks: string[] = []
 
@@ -278,16 +278,7 @@ function generateValidationJS(field: FormField): string {
   return checks.join('\n      ')
 }
 
-function showErrorFunction(): string {
-  return `    function showError(fieldName, message) {
-      const group = document.querySelector(\`[data-field="\${fieldName}"]\`);
-      const error = document.querySelector(\`[data-error="\${fieldName}"]\`);
-      if (group) group.classList.add('has-error');
-      if (error) error.textContent = message;
-    }`
-}
-
-function toCamelCase(str: string): string {
+const toCamelCase = (str: string): string => {
   return str.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) =>
     index === 0 ? word.toLowerCase() : word.toUpperCase()
   ).replace(/\s+/g, '')

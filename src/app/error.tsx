@@ -3,13 +3,13 @@
 import { useEffect } from 'react'
 import { AlertCircle } from 'lucide-react'
 
-export default function Error({
+const Error = ({
   error,
   reset,
 }: {
   error: Error & { digest?: string }
   reset: () => void
-}) {
+}) => {
   useEffect(() => {
     // Log the error to console in development only
     if (process.env.NODE_ENV === 'development') {
@@ -70,4 +70,6 @@ export default function Error({
     </div>
   )
 }
+
+export default Error
 
