@@ -28,7 +28,7 @@ export const FormFieldComponent = ({ field, value, error, onChange, formStyle }:
           <textarea
             id={field.id}
             name={field.name}
-            value={value || ''}
+            value={typeof value === 'string' ? value : typeof value === 'number' ? String(value) : ''}
             onChange={(e) => onChange(field.name, e.target.value)}
             placeholder={field.placeholder}
             rows={4}
@@ -42,7 +42,7 @@ export const FormFieldComponent = ({ field, value, error, onChange, formStyle }:
           <select
             id={field.id}
             name={field.name}
-            value={value || ''}
+            value={typeof value === 'string' ? value : typeof value === 'number' ? String(value) : ''}
             onChange={(e) => onChange(field.name, e.target.value)}
             required={required}
             className={baseInputClass}
@@ -103,7 +103,9 @@ export const FormFieldComponent = ({ field, value, error, onChange, formStyle }:
             name={field.name}
             onChange={(e) => {
               const file = e.target.files?.[0]
-              onChange(field.name, file)
+              if (file) {
+                onChange(field.name, file.name)
+              }
             }}
             required={required}
             className={`${baseInputClass} file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100`}
@@ -116,7 +118,7 @@ export const FormFieldComponent = ({ field, value, error, onChange, formStyle }:
             type={field.type}
             id={field.id}
             name={field.name}
-            value={value || ''}
+            value={typeof value === 'string' ? value : typeof value === 'number' ? String(value) : ''}
             onChange={(e) => {
               const newValue = field.type === 'number' ? parseFloat(e.target.value) || '' : e.target.value
               onChange(field.name, newValue)
